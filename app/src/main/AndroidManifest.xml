@@ -20,7 +20,6 @@
 
         <receiver android:name=".TaskReminderReceiver" />
 
-        <activity android:name=".ReplyActivity"></activity>
     </application>
 
 </manifest>
