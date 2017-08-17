@@ -15,7 +15,6 @@ public class ReplyActivity extends AppCompatActivity {
 
         CharSequence reply = null;
         Intent intent = getIntent();
-        int Id = intent.getIntExtra("id",-1);
         Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (remoteInput != null){
             reply = remoteInput.getCharSequence("status");
@@ -24,7 +23,9 @@ public class ReplyActivity extends AppCompatActivity {
         if(reply != null){
             Toast.makeText(ReplyActivity.this, "You have : " + reply,
                     Toast.LENGTH_SHORT).show();
-            if(reply.equals("Completed")){
+            if(reply == "Completed"){
+                int Id = intent.getIntExtra("id",-1);
+
                 DBHelper dbh = new DBHelper(ReplyActivity.this);
                 dbh.deleteTask(Id);
                 dbh.close();
